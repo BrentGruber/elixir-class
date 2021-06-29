@@ -9,6 +9,7 @@ defmodule Pipetest do
         the_list
         |> tl
         |> sum
+        |> IO.inspect
         |> square
     end
 end
