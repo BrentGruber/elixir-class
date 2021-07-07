@@ -1,0 +1,12 @@
+<table style="width:100%">
+    <tr>
+        <th>Item</th>
+        <th>Count</th>
+    </tr>
+    <%= for {k, v} <- @dict do %>
+        <tr>
+            <th><%= k %></th>
+            <th><%= v %></th>
+        </tr>
+    <% end %>
+</table>

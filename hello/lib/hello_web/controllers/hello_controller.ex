@@ -11,4 +11,10 @@ defmodule HelloWeb.HelloController do
   def show(conn, %{"messenger" => messenger}) do
     render conn, "show.html", messenger: messenger
   end
+
+  def map(conn, _params) do
+    conn
+    |> assign(:dict, %{apples: 5, oranges: 3, bananas: 6})
+    |> render("map.html")
+  end
 end
