@@ -2,7 +2,10 @@ defmodule HelloWeb.HelloController do
   use HelloWeb, :controller
 
   def index(conn, _params) do
-    render conn, "index.html"
+    conn
+    |> IO.inspect
+    |> put_flash(:error, "Welcome back!")
+    |> render("index.html")
   end
 
   def show(conn, %{"messenger" => messenger}) do
