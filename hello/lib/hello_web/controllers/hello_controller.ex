@@ -3,9 +3,9 @@ defmodule HelloWeb.HelloController do
 
   def index(conn, _params) do
     conn
-    |> IO.inspect
-    |> put_flash(:error, "Welcome back!")
-    |> render("index.html")
+    |> put_resp_content_type("text/plain")
+    |> assign(:myVar, "Howdie Doo")
+    |> render("index.html", message: "Hello")
   end
 
   def show(conn, %{"messenger" => messenger}) do

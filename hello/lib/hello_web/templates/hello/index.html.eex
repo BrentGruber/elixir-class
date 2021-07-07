@@ -1,3 +1,5 @@
 <div class='jumbotron'>
     Hello World
+
+    <p>Value is: <%= @myVar %></p>
 </div>
