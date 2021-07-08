@@ -223,4 +223,11 @@ defmodule Foo.CMS do
     # If the unique constraint fails, get the existing author from the db
     Repo.get_by!(Author, user_id: changeset.data.user_id)
   end
+
+  def inc_page_views(%Page{} = page) do
+    {1, [views]} =
+        from(p in Page, where: p.id == ^page.id, select: p.views)
+        |> Repo.update_all([inc: [views: 1]])
+    put_in(page.views, views)
+  end
 end
