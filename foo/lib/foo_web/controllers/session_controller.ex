@@ -22,4 +22,10 @@ defmodule FooWeb.SessionController do
         |> redirect(to: Routes.session_path(conn, :new))
     end
   end
+
+  def delete(conn, _) do
+    conn
+    |> Routes.configure_session(drop: true)
+    |> redirect(to: "/")
+  end
 end
