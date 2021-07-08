@@ -110,6 +110,18 @@ defmodule Foo.Accounts do
     User.changeset(user, attrs)
   end
 
+  def authenticate_by_email_password(email, _password) do
+    query =
+      from u in User,
+        inner_join: c in assoc(u, :credential),
+        where: c.email == ^email
+
+    case Repo.one(query) do
+      %User{} = user -> {:ok, user} #If we get user back, successful so return user
+      nil -> {:error, :unauthorized} #If we don't get a user back there's no matches
+    end
+  end
+
   alias Foo.Accounts.Credential
 
   @doc """
